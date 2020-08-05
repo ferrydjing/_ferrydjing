@@ -47,6 +47,7 @@
   "dependencies": {
     "@babel/runtime": "^7.11.1",
     "@babel/runtime-corejs3": "^7.11.1",
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "js-calculation": "^2.0.5"
   }
 }

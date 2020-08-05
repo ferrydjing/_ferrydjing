@@ -20,7 +20,7 @@
 
 判断对象/数字/字符串是否为空
 
-### 参数
+#### 参数
 
 - [obj]\(String|Object|Array): 需要判断的对象
 
@@ -41,3 +41,20 @@ true/false
 
 - 没有传入 type 的时候返回对应的类型(支持的类型有 string, number, array, boolean, symbol, undefined, null, function, date, regexp, error, document, window, object)
 - 传入 type 时候返回否为对应类型(true/false)
+
+### toCutDecimals
+
+截断传入数字的小数位
+
+#### 支持版本
+
+0.0.5
+
+#### 参数
+
+- [num] \(Number): 需要截断的数字
+- [len] \(Number): 保留的小数长度（默认为 2）
+
+#### 返回值
+
+返回截断后的数字

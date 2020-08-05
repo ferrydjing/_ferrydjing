@@ -3279,6 +3279,11 @@ jest@^26.2.2:
     import-local "^3.0.2"
     jest-cli "^26.2.2"
 
+js-calculation@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/js-calculation/-/js-calculation-2.0.5.tgz#0ab9d0324d70d3f8a0c20ed3f34f30ffc271c8ec"
+  integrity sha512-IQpbjAqRd1UMHfF/J6EO10GJWHf9zA35+j6h034x9eEgklvh1h85gZ7T3Oh8yVZ/mjok7qpPxX83yQ91M8RGGQ==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/js-tokens/download/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
