@@ -1,7 +1,7 @@
 const shell = require('shelljs')
 const pkg = require('./package.json')
 
-shell.exec('yarn test')
+shell.exec('yarn build')
 
 const date = +new Date()
 
