@@ -18,7 +18,7 @@ export const typeCheck = (obj, type) => {
   const tsc = Object.prototype.toString.call
   const res = map[tsc(obj)] || 'undefined'
   if (type && map[tsc(obj)] === 'string') {
-    if (res === toLower(type)) {
+    if (res === type.toLowerCase()) {
       return true
     } else {
       return false
