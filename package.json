@@ -6,7 +6,8 @@
   "module": "dist/lib.esm.js",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "rollup -c",
