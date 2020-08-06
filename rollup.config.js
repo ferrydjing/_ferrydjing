@@ -10,8 +10,8 @@ export default [
     input: './src/index.js',
     external: ['js-calculation'],
     output: {
-      name: '_ferrydjing',
-      file: pkg.browser || 'dist/_ferrydjing.iife.js',
+      name: '_fdj',
+      file: pkg.browser || 'dist/_fdj.iife.js',
       format: 'iife'
     },
     plugins: [
@@ -41,8 +41,8 @@ export default [
     input: './src/index.js',
     external: ['js-calculation'],
     output: {
-      name: '_ferrydjing',
-      file: pkg.browser || 'dist/_ferrydjing.iife.ie.js',
+      name: '_fdj',
+      file: pkg.browser || 'dist/_fdj.iife.ie.js',
       format: 'iife'
     },
     plugins: [

@@ -1,6 +1,6 @@
 import calc from 'js-calculation';
 
-const log = (...msg) => {
+const log$1 = (...msg) => {
   if (process && process.env && process.env.NODE_ENV !== 'production') {
     console.log(...msg);
   }
@@ -81,4 +81,51 @@ const toPercent = (point) => {
   return str
 };
 
-export { isEmpty, log, toCutDecimals, toPercent, typeCheck };
+const session = {
+  get(key) {
+    let res = null;
+    try {
+      if (sessionStorage.getItem(key)) {
+        res = JSON.parse(sessionStorage.getItem(key));
+      }
+    } catch (error) {
+      log(error);
+    }
+    return res
+  },
+  set(key, value) {
+    try {
+      sessionStorage.setItem(key, JSON.stringify(value));
+      return true
+    } catch (error) {
+      log(error);
+      return false
+    }
+  }
+};
+
+const store = {
+  get: (key) => {
+    let res = null;
+    try {
+      if (localStorage.getItem(key)) {
+        res = JSON.parse(localStorage.getItem(key));
+      }
+    } catch (error) {
+      log$1(error);
+    }
+    return res
+  },
+  set: (key, value) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+      return true
+    } catch (error) {
+      log$1(error);
+      return false
+    }
+  },
+  session
+};
+
+export { isEmpty, log$1 as log, store, toCutDecimals, toPercent, typeCheck };
