@@ -1,6 +1,6 @@
 import calc from 'js-calculation';
 
-const log$1 = (...msg) => {
+const log = (...msg) => {
   if (process && process.env && process.env.NODE_ENV !== 'production') {
     console.log(...msg);
   }
@@ -112,7 +112,7 @@ const store = {
         res = JSON.parse(localStorage.getItem(key));
       }
     } catch (error) {
-      log$1(error);
+      log(error);
     }
     return res
   },
@@ -121,11 +121,11 @@ const store = {
       localStorage.setItem(key, JSON.stringify(value));
       return true
     } catch (error) {
-      log$1(error);
+      log(error);
       return false
     }
   },
   session
 };
 
-export { isEmpty, log$1 as log, store, toCutDecimals, toPercent, typeCheck };
+export { isEmpty, log, store, toCutDecimals, toPercent, typeCheck };

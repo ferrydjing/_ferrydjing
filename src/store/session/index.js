@@ -1,3 +1,5 @@
+import { log } from '../../log'
+
 export const session = {
   get(key) {
     let res = null

@@ -6,7 +6,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var calc = _interopDefault(require('js-calculation'));
 
-const log$1 = (...msg) => {
+const log = (...msg) => {
   if (process && process.env && process.env.NODE_ENV !== 'production') {
     console.log(...msg);
   }
@@ -118,7 +118,7 @@ const store = {
         res = JSON.parse(localStorage.getItem(key));
       }
     } catch (error) {
-      log$1(error);
+      log(error);
     }
     return res
   },
@@ -127,7 +127,7 @@ const store = {
       localStorage.setItem(key, JSON.stringify(value));
       return true
     } catch (error) {
-      log$1(error);
+      log(error);
       return false
     }
   },
@@ -135,7 +135,7 @@ const store = {
 };
 
 exports.isEmpty = isEmpty;
-exports.log = log$1;
+exports.log = log;
 exports.store = store;
 exports.toCutDecimals = toCutDecimals;
 exports.toPercent = toPercent;
