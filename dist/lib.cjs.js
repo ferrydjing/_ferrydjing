@@ -253,19 +253,19 @@ const b64_to_utf8 = (str) => {
   return decodeURIComponent(escape(window.atob(str)))
 };
 
-const toBase64 = (obj) => {
+const encodeBase64 = (obj) => {
   return utf8_to_b64(JSON.stringify(obj))
 };
 
-const b64ToUtf8 = (str) => {
+const decodeBase64 = (str) => {
   return JSON.parse(b64_to_utf8(str))
 };
 
-exports.b64ToUtf8 = b64ToUtf8;
+exports.decodeBase64 = decodeBase64;
+exports.encodeBase64 = encodeBase64;
 exports.isEmpty = isEmpty;
 exports.log = log;
 exports.store = store;
-exports.toBase64 = toBase64;
 exports.toCutDecimals = toCutDecimals;
 exports.toPercent = toPercent;
 exports.typeCheck = typeCheck;

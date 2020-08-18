@@ -249,12 +249,12 @@ const b64_to_utf8 = (str) => {
   return decodeURIComponent(escape(window.atob(str)))
 };
 
-const toBase64 = (obj) => {
+const encodeBase64 = (obj) => {
   return utf8_to_b64(JSON.stringify(obj))
 };
 
-const b64ToUtf8 = (str) => {
+const decodeBase64 = (str) => {
   return JSON.parse(b64_to_utf8(str))
 };
 
-export { b64ToUtf8, isEmpty, log, store, toBase64, toCutDecimals, toPercent, typeCheck };
+export { decodeBase64, encodeBase64, isEmpty, log, store, toCutDecimals, toPercent, typeCheck };

@@ -8,10 +8,10 @@ const b64_to_utf8 = (str) => {
   return decodeURIComponent(escape(window.atob(str)))
 }
 
-export const toBase64 = (obj) => {
+export const encodeBase64 = (obj) => {
   return utf8_to_b64(JSON.stringify(obj))
 }
 
-export const b64ToUtf8 = (str) => {
+export const decodeBase64 = (str) => {
   return JSON.parse(b64_to_utf8(str))
 }

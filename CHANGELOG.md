@@ -1,5 +1,12 @@
 # 更新日志
 
+## v0.0.11
+
+### Features
+
+- 新增 encodeBase64 方法
+- 新增 decodeBase64 方法
+
 ## v0.0.10
 
 ### Fix bug
