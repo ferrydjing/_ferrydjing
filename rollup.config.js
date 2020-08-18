@@ -8,7 +8,7 @@ export default [
   // browser-friendly UMD build
   {
     input: './src/index.js',
-    external: ['js-calculation'],
+    // external: ['js-calculation'],
     output: {
       name: '_fdj',
       file: pkg.browser || 'dist/_fdj.iife.js',
@@ -39,7 +39,7 @@ export default [
   // browser-friendly UMD build but IE 8
   {
     input: './src/index.js',
-    external: ['js-calculation'],
+    // external: ['js-calculation'],
     output: {
       name: '_fdj',
       file: pkg.browser || 'dist/_fdj.iife.ie.js',
@@ -74,8 +74,8 @@ export default [
     external: [
       'core-js',
       '@babel/runtime',
-      '@babel/runtime-corejs3',
-      'js-calculation'
+      '@babel/runtime-corejs3'
+      // 'js-calculation'
     ],
     output: [
       {
