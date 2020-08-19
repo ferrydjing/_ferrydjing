@@ -245,20 +245,24 @@ import { store } from '@ferrydjing/utils'
  *  @desc              获取localStorage
  *  @params            参数说明
  *        @key         需要获取的key
+ *        @isBase64    布尔值，非必填，是否是base64
  *  @return            返回值
  *        @result      (对应值/null) 失败或者不存在返回null, 成功为对应值
  **/
 let result = store.get('item')
+let result = store.get('item', true)
 
 /**
  *  @desc             设置localStorage
  *  @params           参数说明
  *       @key         需要设置的key
  *       @value       key对应的值
+ *       @isBase64    布尔值，非必填，是否是base64
  *  @return           返回值说明
  *       @result      (true/false) 成功为true，失败为false
  * */
 let result = store.set('item', 'item')
+let result = store.set('item', 'item', true)
 
 // sessionstorage 使用
 
@@ -266,18 +270,22 @@ let result = store.set('item', 'item')
  *  @desc              获取sessionStorage
  *  @params            参数说明
  *        @key         需要获取的key
+ *        @isBase64    布尔值，非必填，是否是base64
  *  @return            返回值
  *        @result      (对应值/null) 失败或者不存在返回null, 成功为对应值
  **/
 let result = store.session.get('item')
+let result = store.session.get('item', true)
 
 /**
  *  @desc             设置sessionStorage
  *  @params           参数说明
  *       @key         需要设置的key
  *       @value       key对应的值
+ *       @isBase64    布尔值，非必填，是否是base64
  *  @return           返回值说明
  *       @result      (true/false) 成功为true，失败为false
  * */
 let result = store.session.set('item', 'item')
+let result = store.session.set('item', 'item', true)
 ```

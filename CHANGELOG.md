@@ -1,5 +1,16 @@
 # 更新日志
 
+## v0.0.13
+
+### Features
+
+- store 支持 base64
+
+### Bug fix
+
+- 处理 isEmpty 问题
+- 处理 log 问题
+
 ## v0.0.11
 
 ### Features
