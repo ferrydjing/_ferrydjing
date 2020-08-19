@@ -8,6 +8,96 @@
   </head>
   <body></body>
   <script>
-    console.log(_fdj)
+    _fdj.log(_fdj)
+
+    // isEmpty测试
+    const a = {},
+      b = [],
+      c = '',
+      d = { name: 'dd' }
+
+    const ret = _fdj.isEmpty(a) // true
+    const ret2 = _fdj.isEmpty(b) // true
+    const ret3 = _fdj.isEmpty(c) // true
+    const ret4 = _fdj.isEmpty(d) // false
+    _fdj.log(a, ',是否为空:', ret)
+    _fdj.log(b, ',是否为空:', ret2)
+    _fdj.log(c, ',是否为空:', ret3)
+    _fdj.log(d, ',是否为空:', ret4)
+
+    // 类型判断
+    ;(function () {
+      const a = {},
+        b = [],
+        c = '',
+        d = { name: 'dd' }
+
+      _fdj.log(_fdj.typeCheck(a)) // object
+      _fdj.log(_fdj.typeCheck(b)) // array
+      _fdj.log(_fdj.typeCheck(c)) // string
+      _fdj.log(_fdj.typeCheck(d, 'object'))
+    })()
+
+    // 小数截断
+    ;(function () {
+      const a = 1.3332
+
+      _fdj.log(_fdj.toCutDecimals(a)) // 1.33
+      _fdj.log(_fdj.toCutDecimals(a, 1)) // 1.3
+    })()
+
+    // 百分数转换
+    ;(function () {
+      const a = 0.3332,
+        b = 0
+
+      _fdj.log(_fdj.toPercent(a)) // 33.32%
+      _fdj.log(_fdj.toPercent(b)) // 0
+    })()
+
+    // encodeBase64
+    ;(function () {
+      const a = { b: 11 },
+        b = 'hello'
+
+      const str = _fdj.encodeBase64(a) // eyJiIjoxMX0=
+      const str1 = _fdj.encodeBase64(b) // ImhlbGxvIg==
+      _fdj.log(str)
+      _fdj.log(str1)
+    })()
+
+    // encodeBase64
+    ;(function () {
+      const a = { b: 11 },
+        b = 'hello'
+
+      const obj = _fdj.decodeBase64('eyJiIjoxMX0=') // {b:11}
+      const str = _fdj.decodeBase64('ImhlbGxvIg==') // hello
+      _fdj.log(obj)
+      _fdj.log(str)
+    })()
+
+    // store
+    ;(function () {
+      let result = _fdj.store.set('item', 'item')
+      _fdj.log('storage set item:', result)
+      result = _fdj.store.get('item')
+      _fdj.log('storage get item:', result)
+
+      result = _fdj.store.set('item1', 'item', true)
+      _fdj.log('storage set item1 to base64:', result)
+      result = _fdj.store.get('item1', true)
+      _fdj.log('storage get item1:', result)
+
+      result = _fdj.store.session.set('item', 'item1')
+      _fdj.log('sessionstorage set item:', result)
+      result = _fdj.store.session.get('item')
+      _fdj.log('sessionstorage get item:', result)
+
+      result = _fdj.store.session.set('item2', 'item1', true)
+      _fdj.log('sessionstorage set item2 to base64:', result)
+      result = _fdj.store.session.get('item2', true)
+      _fdj.log('sessionstorage get item2:', result)
+    })()
   </script>
 </html>

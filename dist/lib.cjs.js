@@ -3,7 +3,11 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const log = (...msg) => {
-  if (process && process.env && process.env.NODE_ENV !== 'production') {
+  try {
+    if (process && process.env && process.env.NODE_ENV !== 'production') {
+      console.log(...msg);
+    }
+  } catch (error) {
     console.log(...msg);
   }
 };
@@ -26,8 +30,8 @@ const typeCheck = (obj, type) => {
     '[object Object]': 'object'
   };
   const tsc = Object.prototype.toString.call;
-  const res = map[tsc(obj)] || 'undefined';
-  if (type && map[tsc(obj)] === 'string') {
+  const res = map[Object.prototype.toString.call(obj)] || 'undefined';
+  if (type && map[Object.prototype.toString.call(obj)] === 'string') {
     if (res === type.toLowerCase()) {
       return true
     } else {
@@ -196,53 +200,6 @@ const toPercent = (point) => {
   return str
 };
 
-const session = {
-  get(key) {
-    let res = null;
-    try {
-      if (sessionStorage.getItem(key)) {
-        res = JSON.parse(sessionStorage.getItem(key));
-      }
-    } catch (error) {
-      log(error);
-    }
-    return res
-  },
-  set(key, value) {
-    try {
-      sessionStorage.setItem(key, JSON.stringify(value));
-      return true
-    } catch (error) {
-      log(error);
-      return false
-    }
-  }
-};
-
-const store = {
-  get: (key) => {
-    let res = null;
-    try {
-      if (localStorage.getItem(key)) {
-        res = JSON.parse(localStorage.getItem(key));
-      }
-    } catch (error) {
-      log(error);
-    }
-    return res
-  },
-  set: (key, value) => {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-      return true
-    } catch (error) {
-      log(error);
-      return false
-    }
-  },
-  session
-};
-
 // 编码
 const utf8_to_b64 = (str) => {
   return window.btoa(unescape(encodeURIComponent(str)))
@@ -259,6 +216,97 @@ const encodeBase64 = (obj) => {
 
 const decodeBase64 = (str) => {
   return JSON.parse(b64_to_utf8(str))
+};
+
+const session = {
+  get(key, isBase64) {
+    let res = null;
+    try {
+      if (!decodeBase64) {
+        decodeBase64 = _fdj.decodeBase64;
+      }
+    } catch (error) {
+      var decodeBase64 = _fdj.decodeBase64;
+    }
+    try {
+      if (sessionStorage.getItem(key)) {
+        if (isBase64) {
+          res = decodeBase64(sessionStorage.getItem(key));
+        } else {
+          res = JSON.parse(sessionStorage.getItem(key));
+        }
+      }
+    } catch (error) {
+      log(error);
+    }
+    return res
+  },
+  set(key, value, isBase64) {
+    try {
+      if (!encodeBase64) {
+        encodeBase64 = _fdj.encodeBase64;
+      }
+    } catch (error) {
+      var encodeBase64 = _fdj.encodeBase64;
+    }
+    try {
+      if (isBase64) {
+        sessionStorage.setItem(key, encodeBase64(value));
+      } else {
+        sessionStorage.setItem(key, JSON.stringify(value));
+      }
+      return true
+    } catch (error) {
+      log(error);
+      return false
+    }
+  }
+};
+
+const store = {
+  get: (key, isBase64) => {
+    let res = null;
+    try {
+      if (!decodeBase64) {
+        decodeBase64 = _fdj.decodeBase64;
+      }
+    } catch (error) {
+      var decodeBase64 = _fdj.decodeBase64;
+    }
+    try {
+      if (localStorage.getItem(key)) {
+        if (isBase64) {
+          res = decodeBase64(localStorage.getItem(key));
+        } else {
+          res = JSON.parse(localStorage.getItem(key));
+        }
+      }
+    } catch (error) {
+      log(error);
+    }
+    return res
+  },
+  set: (key, value, isBase64) => {
+    try {
+      if (!encodeBase64) {
+        encodeBase64 = _fdj.encodeBase64;
+      }
+    } catch (error) {
+      var encodeBase64 = _fdj.encodeBase64;
+    }
+    try {
+      if (isBase64) {
+        localStorage.setItem(key, encodeBase64(value));
+      } else {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+      return true
+    } catch (error) {
+      log(error);
+      return false
+    }
+  },
+  session
 };
 
 exports.decodeBase64 = decodeBase64;
