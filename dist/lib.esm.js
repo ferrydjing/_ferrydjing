@@ -206,24 +206,17 @@ const b64_to_utf8 = (str) => {
   return decodeURIComponent(escape(window.atob(str)))
 };
 
-const encodeBase64 = (obj) => {
+const encodeBase64$1 = (obj) => {
   return utf8_to_b64(JSON.stringify(obj))
 };
 
-const decodeBase64 = (str) => {
+const decodeBase64$1 = (str) => {
   return JSON.parse(b64_to_utf8(str))
 };
 
 const session = {
   get(key, isBase64) {
     let res = null;
-    try {
-      if (!decodeBase64) {
-        decodeBase64 = _fdj.decodeBase64;
-      }
-    } catch (error) {
-      var decodeBase64 = _fdj.decodeBase64;
-    }
     try {
       if (sessionStorage.getItem(key)) {
         if (isBase64) {
@@ -238,13 +231,6 @@ const session = {
     return res
   },
   set(key, value, isBase64) {
-    try {
-      if (!encodeBase64) {
-        encodeBase64 = _fdj.encodeBase64;
-      }
-    } catch (error) {
-      var encodeBase64 = _fdj.encodeBase64;
-    }
     try {
       if (isBase64) {
         sessionStorage.setItem(key, encodeBase64(value));
@@ -263,13 +249,6 @@ const store = {
   get: (key, isBase64) => {
     let res = null;
     try {
-      if (!decodeBase64) {
-        decodeBase64 = _fdj.decodeBase64;
-      }
-    } catch (error) {
-      var decodeBase64 = _fdj.decodeBase64;
-    }
-    try {
       if (localStorage.getItem(key)) {
         if (isBase64) {
           res = decodeBase64(localStorage.getItem(key));
@@ -283,13 +262,6 @@ const store = {
     return res
   },
   set: (key, value, isBase64) => {
-    try {
-      if (!encodeBase64) {
-        encodeBase64 = _fdj.encodeBase64;
-      }
-    } catch (error) {
-      var encodeBase64 = _fdj.encodeBase64;
-    }
     try {
       if (isBase64) {
         localStorage.setItem(key, encodeBase64(value));
@@ -305,4 +277,4 @@ const store = {
   session
 };
 
-export { decodeBase64, encodeBase64, isEmpty, log, store, toCutDecimals, toPercent, typeCheck };
+export { decodeBase64$1 as decodeBase64, encodeBase64$1 as encodeBase64, isEmpty, log, store, toCutDecimals, toPercent, typeCheck };

@@ -12,7 +12,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "node test/index.js",
+    "test": "jest",
     "pretest": "yarn build",
     "prepare": "node prepublish.js",
     "postpublish": "node postpublish.js"
