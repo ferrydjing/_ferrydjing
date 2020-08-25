@@ -1,6 +1,23 @@
 import { log } from '../log'
 import { session } from './session'
-export { decodeBase64, encodeBase64 } from '../base64'
+
+// 编码
+const utf8_to_b64 = (str) => {
+  return window.btoa(unescape(encodeURIComponent(str)))
+}
+
+// 解码
+const b64_to_utf8 = (str) => {
+  return decodeURIComponent(escape(window.atob(str)))
+}
+
+const encodeBase64 = (obj) => {
+  return utf8_to_b64(JSON.stringify(obj))
+}
+
+const decodeBase64 = (str) => {
+  return JSON.parse(b64_to_utf8(str))
+}
 
 export const store = {
   get: (key, isBase64) => {

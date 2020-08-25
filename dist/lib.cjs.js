@@ -210,11 +210,11 @@ const b64_to_utf8 = (str) => {
   return decodeURIComponent(escape(window.atob(str)))
 };
 
-const encodeBase64$1 = (obj) => {
+const encodeBase64 = (obj) => {
   return utf8_to_b64(JSON.stringify(obj))
 };
 
-const decodeBase64$1 = (str) => {
+const decodeBase64 = (str) => {
   return JSON.parse(b64_to_utf8(str))
 };
 
@@ -249,13 +249,31 @@ const session = {
   }
 };
 
+// 编码
+const utf8_to_b64$1 = (str) => {
+  return window.btoa(unescape(encodeURIComponent(str)))
+};
+
+// 解码
+const b64_to_utf8$1 = (str) => {
+  return decodeURIComponent(escape(window.atob(str)))
+};
+
+const encodeBase64$1 = (obj) => {
+  return utf8_to_b64$1(JSON.stringify(obj))
+};
+
+const decodeBase64$1 = (str) => {
+  return JSON.parse(b64_to_utf8$1(str))
+};
+
 const store = {
   get: (key, isBase64) => {
     let res = null;
     try {
       if (localStorage.getItem(key)) {
         if (isBase64) {
-          res = decodeBase64(localStorage.getItem(key));
+          res = decodeBase64$1(localStorage.getItem(key));
         } else {
           res = JSON.parse(localStorage.getItem(key));
         }
@@ -268,7 +286,7 @@ const store = {
   set: (key, value, isBase64) => {
     try {
       if (isBase64) {
-        localStorage.setItem(key, encodeBase64(value));
+        localStorage.setItem(key, encodeBase64$1(value));
       } else {
         localStorage.setItem(key, JSON.stringify(value));
       }
@@ -281,8 +299,26 @@ const store = {
   session
 };
 
-exports.decodeBase64 = decodeBase64$1;
-exports.encodeBase64 = encodeBase64$1;
+// 编码
+const utf8_to_b64$2 = (str) => {
+  return window.btoa(unescape(encodeURIComponent(str)))
+};
+
+// 解码
+const b64_to_utf8$2 = (str) => {
+  return decodeURIComponent(escape(window.atob(str)))
+};
+
+const encodeBase64$2 = (obj) => {
+  return utf8_to_b64$2(JSON.stringify(obj))
+};
+
+const decodeBase64$2 = (str) => {
+  return JSON.parse(b64_to_utf8$2(str))
+};
+
+exports.decodeBase64 = decodeBase64$2;
+exports.encodeBase64 = encodeBase64$2;
 exports.isEmpty = isEmpty;
 exports.log = log;
 exports.store = store;
